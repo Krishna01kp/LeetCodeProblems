@@ -11,7 +11,7 @@ public:
         }
         if(x>sum)   
             return -1;
-        mp[0] = 0;
+        mp[0] = -1;
         
         int len = 0;
         sum-=x;
@@ -21,10 +21,7 @@ public:
             val += nums[i];
             if(mp.count(val-sum))
             {
-                if(val-sum==0)
-                    len = max(len,i-mp[val-sum]+1);
-                else
-                    len = max(len,i-mp[val-sum]);
+                len = max(len,i-mp[val-sum]);
             }
         }
         return len==0?(sum==0?n:-1):n-len;
