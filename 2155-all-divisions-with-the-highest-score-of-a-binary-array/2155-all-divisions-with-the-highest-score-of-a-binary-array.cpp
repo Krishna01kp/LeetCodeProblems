@@ -7,19 +7,28 @@ public:
         {
             sum+=x;
         }
-        int presum=nums[0],mx=max(sum,n-sum);
-        unordered_map<int,vector<int>>mp;
-        mp[sum].push_back(0);
-        mp[n-sum].push_back(n);
-        for(int i=1;i<n;i++)
+        vector<int>res;
+        int one=sum,zero=0,mx=0;
+        
+        
+        for(int i=0;i<=n;i++)
         {
-            int temp=i-presum +(sum-presum);
-            mx=max(mx,temp);
-            mp[temp].push_back(i);
-            presum+=nums[i];
+            int temp=zero + one;
+            if(temp>mx)
+            {
+                mx=temp;
+                res={i};
+            }
+            else if(temp==mx)
+            {
+                res.push_back(i);
+            }
+            if(i<n)
+            {
+                one-=(nums[i]==1);
+                zero+=(nums[i]==0);
+            }
         }
-        vector<int>ans= mp[mx];
-       // sort(ans.begin(),ans.end());
-        return ans;
+        return res;
     }
 };
