@@ -56,10 +56,7 @@ public:
                 scs+=s1[i++];
             }
         }
-        if(i<n)
-            scs+=s1.substr(i);
-        if(j<m)
-            scs+=s2.substr(j);
+        scs+=s1.substr(i) + s2.substr(j);
         return scs;
     }
 };
