@@ -10,6 +10,7 @@ using namespace std;
 class Solution{
 public:
 int dp[505][505];
+
 bool ispalindrom(int i,int j,string str)
 {
     if(i>=j)return true;
@@ -30,6 +31,10 @@ int solve(int i, int j, string &str)
     int mn=INT_MAX;
     for(int k=i;k<=j-1;k++)
     {
+        // if(k==i or (str[i]==str[k] and (i+1==k or ispalin[i+1][k-1])))
+        //     {
+        //         ispalin[i][k]=1;
+        //     }
         int left,right;
         if(dp[i][k]!=-1)left=dp[i][k];
         else
@@ -49,7 +54,7 @@ int solve(int i, int j, string &str)
         
         int n=str.size();
         memset(dp,-1,sizeof(dp));
-        solve(0,n-1,str);
+        return solve(0,n-1,str);
         
     }
 };
