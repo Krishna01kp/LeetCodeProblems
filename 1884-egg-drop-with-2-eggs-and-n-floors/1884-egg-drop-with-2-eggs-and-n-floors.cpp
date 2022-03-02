@@ -6,17 +6,10 @@ public:
         if(f==0 or f==1)return f;
         if(e==1)return f;
         if(dp[e][f]!=-1)return dp[e][f];
-        int ans=INT_MAX,low=0,hig=f,temp=0;
-        while(low<=hig)
+        int ans=INT_MAX;
+        for(int k=1;k<=f;k++)
         {
-            int mid=(low+hig)/2;
-            int left=solve(e-1,mid-1);
-            int right=solve(e,f-mid);
-            temp=1+max(left,right);
-            if(left < right) 
-                low = mid+1;
-            else 
-                hig = mid-1;
+            int temp=1+max(solve(e-1,k-1),solve(e,f-k));
             ans=min(ans,temp);
         }
         return dp[e][f]=ans;
