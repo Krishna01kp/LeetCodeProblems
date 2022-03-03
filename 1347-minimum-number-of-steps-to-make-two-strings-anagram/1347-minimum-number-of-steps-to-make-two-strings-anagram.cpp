@@ -1,19 +1,16 @@
 class Solution {
 public:
     int minSteps(string s, string t) {
-        int n=s.size();
-        unordered_map<char,int>mp1,mp2;
+        unordered_map<char,int>mp;
         for(auto c:s)
-            mp2[c]++;
+            mp[c]++;
         for(auto c:t)
-            mp1[c]++;
+            mp[c]--;
         int ans=0;
-        for(auto c:s)
+        for(auto m:mp)
         {
-            if(mp1[c]<mp2[c])
-            ans+=(mp2[c]-mp1[c]);
-            mp1[c]=mp2[c];
+            ans+=abs(m.second);
         }
-        return ans;
+        return (ans+1)/2;
     }
 };
