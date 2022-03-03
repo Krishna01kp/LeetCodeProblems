@@ -1,6 +1,7 @@
 class Solution {
 public:
     int dp[2005][2005];
+    int ans=0,n;
     int solve(int l, int r,string &s)
     {
         if(l>r)return 0;
@@ -10,6 +11,8 @@ public:
         if(s[l]==s[r])
         {
             len=2+solve(l+1,r-1,s);
+            if(l<n and r>=n)
+                ans=max(ans,len);
         }
         else
         {
@@ -18,23 +21,24 @@ public:
         return dp[l][r]=len;
     }
     int longestPalindrome(string w1, string w2) {
-        int n=w1.size(),m=w2.size();
+        n=w1.size();
+        int m=w2.size();
         string s=w1+w2;
         memset(dp,-1,sizeof(dp));
         solve(0,n+m-1,s);
         
-        int ans=0;
-        for(int i=0;i<n;i++)
-        {
-            for(int j=s.size()-1;j>=0;j--)
-            {
-                if(s[i]==s[j] and (i<n and j>=n))
-                {
-                    ans=max(ans,dp[i][j]);
-                    break;
-                }
-            }
-        }
+        // int ans=0;
+        // for(int i=0;i<n;i++)
+        // {
+        //     for(int j=s.size()-1;j>=0;j--)
+        //     {
+        //         if(s[i]==s[j] and (i<n and j>=n))
+        //         {
+        //             ans=max(ans,dp[i][j]);
+        //             break;
+        //         }
+        //     }
+        // }
         return ans;
     }
 };
