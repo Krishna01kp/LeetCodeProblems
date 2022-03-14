@@ -11,10 +11,9 @@ public:
         int idx1=i,idx2=i+1;
         for(int j=idx1;j<n;j++)
         {
-            if(arr[j]<arr[idx1])
+            if(arr[j]<arr[idx1] and arr[j]>arr[idx2])
             {
-                if(arr[j]>arr[idx2])
-                    idx2=j;
+                idx2=j;
             }
         }
         
