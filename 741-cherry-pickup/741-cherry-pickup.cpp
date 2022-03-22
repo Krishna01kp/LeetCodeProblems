@@ -14,15 +14,17 @@ public:
             return INT_MIN;
         if(dp[r1][c1][r2][c2]!=-1)
             return dp[r1][c1][r2][c2];
+        int ans=0;
+        ans+=grid[r1][c1];
+        if(r1!=r2)
+            ans+=grid[r2][c2];
         int one=solve(r1+1,c1,r2+1,c2,grid);
         int two=solve(r1+1,c1,r2,c2+1,grid);
         int three=solve(r1,c1+1,r2+1,c2,grid);
         int four=solve(r1,c1+1,r2,c2+1,grid);
         
-        int ans=max(max(one,two),max(three,four));
-        ans+=grid[r1][c1];
-        if(r1!=r2)
-            ans+=grid[r2][c2];
+        ans+=max(max(one,two),max(three,four));
+        
         return (dp[r1][c1][r2][c2]=ans);
         
     }
