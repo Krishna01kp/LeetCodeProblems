@@ -9,19 +9,17 @@ public:
         {
             if((people[i]+people[j])<=limit)
             {
-                cnt++;
                 i++,j--;
             }
             else if(people[j]<=limit)
             {
-                cnt++;
                 j--;
             }
             else 
             {
-                cnt++;
                 i++;
             }
+            cnt++;
         }
         return cnt;
     }
