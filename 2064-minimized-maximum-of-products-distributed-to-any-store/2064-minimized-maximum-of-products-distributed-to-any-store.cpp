@@ -1,13 +1,14 @@
 class Solution {
 public:
+    // Same as Koko Eating Bananas
     int solve(vector<int>&q,long long int k)
     {
-        int hr=0;
+        int store=0;
         for(auto a:q)
         {
-           hr+=(a+k-1)/k; 
+           store+=(a+k-1)/k; 
         }
-        return hr;
+        return store;
     }
     int minimizedMaximum(int n, vector<int>& q) {
         long long int lo=1,hi=1e11,mid,ans;
