@@ -1,23 +1,16 @@
 class Solution {
 public:
-    int atmost_k(vector<int>&nums, int k)
-    {
-        if(k<0)return 0;
+    int numSubarraysWithSum(vector<int>& nums, int goal) {
         int n=nums.size();
+        unordered_map<int,int>mp;
+        mp[0]=1;
         int ans=0,sum=0;
-        for(int i=0,j=0;j<n;j++)
+        for(int i=0;i<n;i++)
         {
-            sum+=nums[j];
-            while(i<n and sum>k)
-            {
-                
-                sum-=nums[i++];
-            }
-            ans+=(j-i+1);
+            sum+=nums[i];
+            ans+=mp[sum-goal]; // check the number of subarray with the sum-goal (excess)
+            mp[sum]++;
         }
         return ans;
-    }
-    int numSubarraysWithSum(vector<int>& nums, int goal) {
-        return atmost_k(nums,goal)-atmost_k(nums,goal-1);
     }
 };
