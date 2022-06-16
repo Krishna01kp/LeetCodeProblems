@@ -4,7 +4,7 @@ public:
         int n=S.size();
         bool dp[n][n];
         memset(dp,0,sizeof(dp));
-        int max_len=1,start=0;
+        int max_len=1,start=0; // start maintain the starting index of longest substring and max_len maintain the length of substring 
         
         // fill all diagonal elements
         for(int i=0;i<n;i++)
